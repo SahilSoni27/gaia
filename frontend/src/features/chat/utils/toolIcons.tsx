@@ -243,6 +243,12 @@ const iconConfigs: Record<string, IconConfig> = {
     iconColor: "text-zinc-200",
     isImage: true,
   },
+  spotify: {
+    icon: "/images/icons/spotify.svg",
+    bgColor: "bg-zinc-700",
+    iconColor: "text-zinc-200",
+    isImage: true,
+  },
   clickup: {
     icon: "/images/icons/clickup.svg",
     bgColor: "bg-zinc-700",

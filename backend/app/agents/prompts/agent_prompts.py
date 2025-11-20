@@ -125,6 +125,9 @@ For provider-specific operations (email, calendar, social media, productivity ap
 • call_notion_agent - Workspace management
 • call_twitter_agent, call_linkedin_agent - Social media
 • call_hubspot_agent - CRM and business operations
+• call_instagram_agent - Social media
+• call_clickup_agent - Task and project management
+• call_spotify_agent - Music management
 • And other `call_*_agent` tools for specific integrations
 
 How to use handoff tools:

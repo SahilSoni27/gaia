@@ -170,19 +170,22 @@ class ToolRegistry:
                     "asana",
                     "trello",
                     "instagram",
+                    "spotify",
                     "clickup",
                 ]
             ),
         )
 
         add_category("notifications", tools=[*notification_tool.tools])
-        add_category("productivity", tools=[*todo_tool.tools, *reminder_tool.tools])
+        add_category("productivity", tools=[
+                     *todo_tool.tools, *reminder_tool.tools])
         add_category("goal_tracking", tools=goal_tool.tools)
         add_category("support", tools=[support_tool.create_support_ticket])
         add_category("memory", tools=memory_tools.tools)
         add_category(
             "development",
-            tools=[code_exec_tool.execute_code, flowchart_tool.create_flowchart],
+            tools=[code_exec_tool.execute_code,
+                   flowchart_tool.create_flowchart],
         )
         add_category("creative", tools=[image_tool.generate_image])
         add_category("weather", tools=[weather_tool.get_weather])
@@ -225,6 +228,7 @@ class ToolRegistry:
             ("ASANA", "asana", None),
             ("TRELLO", "trello", None),
             ("INSTAGRAM", "instagram", None),
+            ("SPOTIFY", "spotify", None),
             ("CLICKUP", "clickup", None),
             ("GMAIL", "gmail", GMAIL_TOOLS),
             ("GITHUB", "github", GITHUB_TOOLS),

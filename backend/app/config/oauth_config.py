@@ -196,6 +196,20 @@ OAUTH_INTEGRATIONS: List[OAuthIntegration] = [
         ),
     ),
     OAuthIntegration(
+        id="spotify",
+        name="Spotify",
+        description="Manage playlists, play music, and explore new tracks",
+        category="entertainment",
+        provider="spotify",
+        scopes=[],
+        available=True,
+        short_name="spotify",
+        managed_by="composio",
+        composio_config=ComposioConfig(
+            auth_config_id="ac_ar6kD-hPVwob", toolkit="SPOTIFY"
+        ),
+    ),
+    OAuthIntegration(
         id="airtable",
         name="Airtable",
         description="Create and manage bases, tables, and records with AI-powered automation",

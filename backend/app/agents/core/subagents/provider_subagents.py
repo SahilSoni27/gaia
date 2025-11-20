@@ -102,7 +102,8 @@ class ProviderSubAgents:
         Returns:
             Compiled LinkedIn sub-agent graph
         """
-        logger.info("Creating LinkedIn sub-agent graph using general tool space")
+        logger.info(
+            "Creating LinkedIn sub-agent graph using general tool space")
 
         # Create the LinkedIn agent graph using entire tool registry with space filtering
         linkedin_agent = await SubAgentFactory.create_provider_subagent(
@@ -128,7 +129,8 @@ class ProviderSubAgents:
         Returns:
             Compiled Calendar sub-agent graph
         """
-        logger.info("Creating Calendar sub-agent graph with direct tool binding")
+        logger.info(
+            "Creating Calendar sub-agent graph with direct tool binding")
 
         # Create the Calendar agent graph with direct tool binding
         calendar_agent = await SubAgentFactory.create_provider_subagent(
@@ -344,6 +346,17 @@ class ProviderSubAgents:
         )
 
     @staticmethod
+    async def create_spotify_agent(llm: LanguageModelLike):
+        """Create a specialized Spotify agent graph."""
+        logger.info("Creating Spotify sub-agent graph")
+        return await SubAgentFactory.create_provider_subagent(
+            provider="spotify",
+            llm=llm,
+            tool_space="spotify",
+            name="spotify_agent",
+        )
+
+    @staticmethod
     async def get_all_subagents() -> dict[str, Any]:
         """
         Create all provider-specific sub-agent graphs.
@@ -379,6 +392,7 @@ class ProviderSubAgents:
             ProviderSubAgents.create_trello_agent(llm),
             ProviderSubAgents.create_clickup_agent(llm),
             ProviderSubAgents.create_instagram_agent(llm),
+            ProviderSubAgents.create_spotify_agent(llm),
         )
         return {
             "gmail_agent": results[0],
@@ -403,4 +417,5 @@ class ProviderSubAgents:
             "trello_agent": results[19],
             "clickup_agent": results[20],
             "instagram_agent": results[21],
+            "spotify_agent": results[22],
         }

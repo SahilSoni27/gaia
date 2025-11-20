@@ -23,6 +23,7 @@ from app.agents.prompts.subagent_prompts import (
     TRELLO_AGENT_SYSTEM_PROMPT,
     TWITTER_AGENT_SYSTEM_PROMPT,
     ZOOM_AGENT_SYSTEM_PROMPT,
+    SPOTIFY_AGENT_SYSTEM_PROMPT
 )
 from app.config.loggers import common_logger as logger
 from app.config.oauth_config import get_integration_by_id
@@ -86,7 +87,8 @@ async def check_integration_connection(
         return Command(update={"messages": state["messages"] + [tool_message]})
 
     except Exception as e:
-        logger.error(f"Error checking integration status for {integration_id}: {e}")
+        logger.error(
+            f"Error checking integration status for {integration_id}: {e}")
         return None
 
 
@@ -519,6 +521,22 @@ def get_handoff_tools(enabled_providers: List[str]):
                 ),
                 system_prompt=INSTAGRAM_AGENT_SYSTEM_PROMPT,
                 integration_id="instagram",
+            )
+        )
+
+    if "spotify" in enabled_providers:
+        tools.append(
+            create_handoff_tool(
+                tool_name="call_spotify_agent",
+                agent_name="spotify_agent",
+                description=HANDOFF_DESCRIPTION_TEMPLATE.format(
+                    provider_name="Spotify",
+                    domain="music streaming and playlist management",
+                    capabilities="searching for songs, creating and managing playlists, following artists, liking tracks, and automating music discovery",
+                    use_cases="music search, playlist creation, artist following, or any Spotify-related task",
+                ),
+                system_prompt=SPOTIFY_AGENT_SYSTEM_PROMPT,
+                integration_id="spotify",
             )
         )
 
